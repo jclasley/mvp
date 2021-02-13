@@ -33,7 +33,6 @@ Once the project moves into development, the press release can be used as a touc
 
 ## Quote from You ##
   > 'Check out these asteroids'
-
 ## How to Get Started ##
   > Select a time period (default today) and check out the asteroids! Hover over the asteroids for interesting tidbits, particularly when they will next be closest to Earth.
 

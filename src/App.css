@@ -1,0 +1,6 @@
+.earth {
+  display: flex;
+  background: url('./assets/earth2.png');
+  width: fit-content;
+  height: fit-content;
+}

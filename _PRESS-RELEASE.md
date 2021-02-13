@@ -17,28 +17,28 @@ Once the project moves into development, the press release can be used as a touc
  -->
  
 ## Heading ##
-  > Name the product in a way the reader (i.e. your target customers) will understand.
+  > Will an asteroid destroy Earth?
 
 ## Sub-Heading ##
-  > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
+  > Probably not. But isn't it fun to check? Check the location of asteroids and their proximity to Earth, both past and present.
 
 ## Summary ##
-  > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
+  > Using the NASA API, I've constructed a progressive web application to visualize the approximate size and distance of asteroids around Earth. Hover over any asteroid to see some asteroid's factoids.
 
 ## Problem ##
-  > Describe the problem your product solves.
+  > Data on asteroids and their proximity to Earth is hard to grasp when given numerically
 
 ## Solution ##
-  > Describe how your product elegantly solves the problem.
+  > Visual representations of asteroid data provide immediate visual feedback and inherent comprehension of astronomical data easily dismissed as jargon.
 
 ## Quote from You ##
-  > A quote from a spokesperson in your company.
+  > 'Check out these asteroids'
 
 ## How to Get Started ##
-  > Describe how easy it is to get started.
+  > Select a time period (default today) and check out the asteroids! Hover over the asteroids for interesting tidbits, particularly when they will next be closest to Earth.
 
 ## Customer Quote ##
-  > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
+  > 'Wow! This website is out of this world.'
 
 ## Closing and Call to Action ##
-  > Wrap it up and give pointers where the reader should go next.
+  > Asteroids are cool. Come check them out.

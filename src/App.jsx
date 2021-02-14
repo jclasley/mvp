@@ -30,12 +30,11 @@ const App = () => {
 
   return (
     <>
-      <div>React is working!</div>
       <svg width="100vw" height="100vh" align="center">
-        <circle ref={img} cx="50%" cy="50%" r="100"></circle>
+        <circle onClick={() => console.log('clicked')} ref={img} cx="50%" cy="50%" r="100"></circle>
         {asteroids.length && asteroids.map(asteroid => {
           console.log(asteroid)
-          return <Asteroid earth={img} asteroid={asteroid} />
+          return <Asteroid onClick={() => console.log('clicked')} earth={img} asteroid={asteroid} />
         })}
       </svg>
     </>

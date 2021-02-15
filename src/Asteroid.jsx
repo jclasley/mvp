@@ -21,12 +21,12 @@ const Asteroid = ({asteroid, earth}) => {
   const earthY = earth.current.cy.baseVal.value;
   const earthR = earth.current.r.baseVal.value;
   const randAngle = Math.random() * 2 * Math.PI;
-  const calcX = (angle) => (Math.log(distance.kilometers) ** 2 + earthR) * Math.sin(angle) + earthX;
-  const calcY = (angle) => (Math.log(distance.kilometers) ** 2 + earthR) * Math.cos(angle) + earthY;
+  const calcX = (angle) => (Math.log(distance.km) ** 2 + earthR) * Math.sin(angle) + earthX;
+  const calcY = (angle) => (Math.log(distance.km) ** 2 + earthR) * Math.cos(angle) + earthY;
   let centerX = calcX(randAngle);
   let centerY = calcY(randAngle);
-  const avgSize = (size.kilometers.estimated_diameter_max + size.kilometers.estimated_diameter_min) / 2;
-  const radius = Math.log(distance.kilometers) ** 2 + earthR;
+  const avgSize = (size.kilometers.min + size.kilometers.max) / 2;
+  const radius = Math.log(distance.km) ** 2 + earthR;
 
   const calcOpposite = () => randAngle > Math.PI ? randAngle + Math.PI : randAngle - Math.PI;
 
@@ -34,7 +34,7 @@ const Asteroid = ({asteroid, earth}) => {
       <>
         <circle id={asteroid.name} fill={hazardous ? "red" : "white"}
           r={Math.abs(Math.log10(avgSize)) * 4}>
-          <animateMotion dur={`${1 / velocity.kilometers_per_second * 200}s`} repeatCount="indefinite" begin="0s" path={`M ${centerX} ${centerY}
+          <animateMotion dur={`${1 / velocity.kps * 200}s`} repeatCount="indefinite" begin="0s" path={`M ${centerX} ${centerY}
                 A ${radius} ${radius} 0 1 0
                   ${calcX(calcOpposite())} ${calcY(calcOpposite())}
                 A ${radius} ${radius} 0 1 0
@@ -45,7 +45,7 @@ const Asteroid = ({asteroid, earth}) => {
         <circle id={`${asteroid.name}-outline`} fill="none" 
           stroke={"none"}
           r={20}>
-          <animateMotion dur={`${1 / velocity.kilometers_per_second * 200}s`} repeatCount="indefinite" begin="0s" 
+          <animateMotion dur={`${1 / velocity.kps * 200}s`} repeatCount="indefinite" begin="0s" 
             path={`M ${centerX} ${centerY}
                 A ${radius} ${radius} 0 1 0
                   ${calcX(calcOpposite())} ${calcY(calcOpposite())}

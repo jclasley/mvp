@@ -1,28 +1,43 @@
 import axios from 'axios';
-import React, {useEffect, useState, useRef, createRef} from 'react';
+import React, {useEffect, useState, useRef } from 'react';
 import Asteroid from './Asteroid';
 import AsteroidInfo from './AsteroidInfo';
+import DropDown from './DropDown';
 const Controller = require('../controllers/index');
 
 const App = () => {
   const [asteroids, setAsteroids] = useState([]);
-  const now = new Date(Date.now());
   const img = useRef(null);
 
   useEffect(() => {
-    axios.get('/api/asteroids/')
+    axios.get('/api/asteroids')
       .then(({data}) => data.map(obj => {
         return {
-          time: obj.close_approach_data[0].close_approach_date_full,
-          distance: obj.close_approach_data[0].miss_distance,
-          velocity: obj.close_approach_data[0].relative_velocity,
-          size: obj.estimated_diameter,
+          time: obj.closeApproaches[0].date,
+          distance: obj.closeApproaches[0].missDistance,
+          velocity: obj.closeApproaches[0].relativeVelocity,
+          size: obj.estimatedDiameter,
           name: obj.name,
-          hazardous: obj.is_potentially_hazardous_asteroid
+          hazardous: obj.hazardous
         }
       }))
       .then((mapped) => setAsteroids(mapped));
   }, [])
+
+  const update = (date) => {
+    axios.get(`/api/asteroids/${date}`)
+      .then(({ data }) => data.map(obj => {
+        return {
+          time: obj.closeApproaches[0].date,
+          distance: obj.closeApproaches[0].missDistance,
+          velocity: obj.closeApproaches[0].relativeVelocity,
+          size: obj.estimatedDiameter,
+          name: obj.name,
+          hazardous: obj.hazardous
+        }
+      }))
+      .then((mapped) => setAsteroids(mapped)); 
+  }
 
   return (
     <>
@@ -32,6 +47,7 @@ const App = () => {
           return <Asteroid earth={img} asteroid={asteroid} />
         })}
       </svg>
+      <DropDown update={update} />
       <div className="info-list">
         {asteroids.length && asteroids.map((asteroid, n) => {
           return <AsteroidInfo name={asteroid.name} size={asteroid.size}

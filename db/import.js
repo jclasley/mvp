@@ -29,7 +29,7 @@ const createAsteroid = (obj) => {
     },
     hazardous: obj.is_potentially_hazardous_asteroid,
     closeApproaches: obj.close_approach_data.map(approach => ({
-      date: approach.close_approach_date,
+      date: approach.close_approach_date_full,
         relativeVelocity: {
         kps: approach.relative_velocity.kilometers_per_second,
           kph: approach.relative_velocity.kilometers_per_hour,
@@ -42,7 +42,7 @@ const createAsteroid = (obj) => {
     }))
   })
 
-  asteroid.save();
+  return asteroid;
 };
 
 module.exports = createAsteroid;

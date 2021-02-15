@@ -4,18 +4,11 @@ const app = express();
 const { Asteroid } = require('../db/model');
 const createAsteroid = require('../db/import');
 const Controller = require('../controllers/index');
+const formatDate = require('../controllers/helpers');
 require('dotenv').config()
 
 app.use(express.json());
 app.use(express.static(path.resolve(__dirname, '../public')))
-
-const formatDate = (date) => {
-  if (typeof date === 'string') return date; 
-  const month = date.getMonth() + 1 < 10 ? `0${date.getMonth() + 1}` : `${date.getMonth() + 1}`;
-  const day = date.getDate() < 10 ? `0${date.getDate()}` : `${date.getDate()}`;
-  date = `${date.getUTCFullYear()}-${month}-${day}`
-  return date;
-}
 
 app.get('/api/asteroids/:date?', async (req, res) => {
   try {
@@ -27,10 +20,11 @@ app.get('/api/asteroids/:date?', async (req, res) => {
     });
     if (!results.length) {
       results = await Controller.getDate(date, process.env.API_KEY);
-      results.forEach(asteroid => {
-        console.log('close', asteroid);
-        createAsteroid(asteroid);
-      })
+      results = results.map((asteroid) => {
+        const a = createAsteroid(asteroid);
+        a.save();
+        return a;
+      });
     }
     res.status(200).send(results);
   } catch (err) {

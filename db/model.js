@@ -2,19 +2,6 @@ const mongoose = require('mongoose');
 
 mongoose.connect('mongodb://localhost:27017/mvp', {useNewUrlParser: true, useUnifiedTopology: true});
 
-const approachSchema = new mongoose.Schema({
-  date: String,
-  relativeVelocity: {
-    kps: String,
-    kph: String,
-    mph: String
-  },
-  missDistance: {
-    km: String,
-    miles: String
-  }
-})
-
 const asteroidSchema = new mongoose.Schema({
   'astId': String,
   'name': String,
@@ -39,13 +26,22 @@ const asteroidSchema = new mongoose.Schema({
     }
   },
   hazardous: Boolean,
-  closeApproaches: [approachSchema]
+  closeApproaches: [{
+    date: String,
+    relativeVelocity: {
+      kps: String,
+      kph: String,
+      mph: String
+    },
+    missDistance: {
+      km: String,
+      miles: String
+    }
+  }]
 });
 
 const Asteroid = mongoose.model('Asteroid', asteroidSchema);
-const Approach = mongoose.model('Approach', approachSchema);
 
 module.exports = {
-  Asteroid,
-  Approach
+  Asteroid
 }

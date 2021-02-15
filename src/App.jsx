@@ -1,7 +1,6 @@
-import React, {useEffect, useState, useRef} from 'react';
-import styles from './App.css';
-import Earth from './assets/earth2.png';
+import React, {useEffect, useState, useRef, createRef} from 'react';
 import Asteroid from './Asteroid';
+import AsteroidInfo from './AsteroidInfo';
 const Controller = require('../controllers/index');
 
 const App = () => {
@@ -25,18 +24,23 @@ const App = () => {
           hazardous: obj.is_potentially_hazardous_asteroid
         }
       }))
-      .then(mapped => setAsteroids(mapped));
+      .then((mapped) => setAsteroids(mapped));
   }, [])
 
   return (
     <>
-      <svg width="100vw" height="100vh" align="center">
-        <circle onClick={() => console.log('clicked')} ref={img} cx="50%" cy="50%" r="100"></circle>
-        {asteroids.length && asteroids.map(asteroid => {
-          console.log(asteroid)
-          return <Asteroid onClick={() => console.log('clicked')} earth={img} asteroid={asteroid} />
+      <svg width="70vw" height="100vh" align="center">
+        <circle ref={img} cx="50%" cy="50%" r="60" fill="white"></circle>
+        {asteroids.length && asteroids.map((asteroid, n) => {
+          return <Asteroid earth={img} asteroid={asteroid} />
         })}
       </svg>
+      <div className="info-list">
+        {asteroids.length && asteroids.map((asteroid, n) => {
+          return <AsteroidInfo name={asteroid.name} size={asteroid.size}
+            time={asteroid.time} distance={asteroid.distance} velocity={asteroid.velocity} />
+        })}
+      </div>
     </>
   )
 }

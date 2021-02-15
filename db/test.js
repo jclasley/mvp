@@ -1,0 +1,2 @@
+const { Asteroid } = require('./model');
+

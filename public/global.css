@@ -1,0 +1,30 @@
+#app {
+  display: flex;
+}
+
+body {
+  background: black;
+}
+
+.info-list{
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  height: 100vh;
+  justify-content: space-evenly;
+}
+
+svg {
+  grid-area: 1/1
+}
+
+.asteroidList {
+  grid-column: 2;
+  height: min-content;
+  color: white;
+}
+
+.asteroidInfo {
+  grid-column: 1;
+  grid-row: 1 / span 10;
+  color: lightblue;
+}

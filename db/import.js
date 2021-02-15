@@ -3,7 +3,7 @@ const {Asteroid, Approach} = require('./model');
 
 const a = new Asteroid({ name: 'test' })
 
-data.near_earth_objects.forEach(async (obj) => {
+const createAsteroid = (obj) => {
   const asteroid = new Asteroid({
     astId: obj.id,
     name: obj.name,
@@ -42,5 +42,7 @@ data.near_earth_objects.forEach(async (obj) => {
     }))
   })
 
-  await asteroid.save();
-})
+  asteroid.save();
+};
+
+module.exports = createAsteroid;

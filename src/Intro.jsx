@@ -70,7 +70,7 @@ const Intro = ({firstTime, topLeft, info, zen, astInfo}) => {
       <Overlay target={topLeft} show={dateInfo} placement="right">
         {datePop}
       </Overlay>
-      <Overlay target={astInfo} show={astInfoState} placement="left">
+      <Overlay target={astInfo} show={astInfoState} placement="left-end">
         {astPop}
       </Overlay>
       <Overlay target={zen} show={zenInfo} placement="right">

@@ -95,16 +95,14 @@ const App = () => {
         </div>
       </div>
       
-      <div id='summary' className="summary">
+      <div ref={astInfo} id='summary' className="summary">
         Displaying {asteroids.length} asteroids
       </div>
       <div  id="info" className="info-list">
-        <div ref={astInfo} id="pop-holder" className="asteroidList">
         {asteroids.length && asteroids.map((asteroid, n) => {
           return <AsteroidInfo name={asteroid.name} size={asteroid.size}
             time={asteroid.time} distance={asteroid.distance} velocity={asteroid.velocity} />
         })}
-        </div>
       </div>
       
       <div className="about"> 

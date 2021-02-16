@@ -1,8 +1,10 @@
 import axios from 'axios';
 import React, {useEffect, useState, useRef } from 'react';
+import { CSSTransition } from 'react-transition-group';
 import Asteroid from './Asteroid';
 import AsteroidInfo from './AsteroidInfo';
 import DropDown from './DropDown';
+import About from './About';
 
 const App = () => {
   const [asteroids, setAsteroids] = useState([]);
@@ -38,6 +40,19 @@ const App = () => {
       .then((mapped) => setAsteroids(mapped)); 
   }
 
+  const zenMode = () => {
+    const forms = document.getElementsByTagName('form');
+    const sum = document.getElementById('summary')
+    const info = document.getElementById('info')
+    const about = document.getElementById('about')
+    for (let form of forms) { 
+      form.style.opacity = form.style.opacity === '0' ? '1' : '0';
+    }
+    sum.style.opacity = sum.style.opacity === '0' ? '1' : '0';
+    info.style.opacity = info.style.opacity === '0' ? '1' : '0';
+    about.style.opacity = about.style.opacity === '0' ? '1' : '0';
+  }
+
   return (
     <>
       <svg width="100vw" height="100vh" align="center">
@@ -46,19 +61,22 @@ const App = () => {
           return <Asteroid earth={img} asteroid={asteroid} />
         })}
       </svg>
-      <DropDown update={update} />
-      <div className="summary">
+      <div className="top-left">
+        <DropDown update={update} />
+        <div className="zen" onClick={() => zenMode()}>Zen mode</div>
+      </div>
+      
+      <div id='summary' className="summary">
         Displaying {asteroids.length} asteroids
       </div>
-      <div className="info-list">
+      <div id="info" className="info-list">
         {asteroids.length && asteroids.map((asteroid, n) => {
           return <AsteroidInfo name={asteroid.name} size={asteroid.size}
             time={asteroid.time} distance={asteroid.distance} velocity={asteroid.velocity} />
         })}
       </div>
-      <div className="about">
-        Displays all near-earth-objects for a given day, as retrieved from NASA. Change the day to see historical records. Hover an asteroid's name on the right to see more info. Asteroid distance, size, and orbital speed are logarithmically proportional to the actual data.
-      </div>
+      
+      <About />
       <div className="copyright">
         <small>Made by <a href="github.com/jclasley">Jon Lasley</a>, 2021</small>
       </div>

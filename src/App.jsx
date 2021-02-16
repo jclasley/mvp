@@ -3,7 +3,6 @@ import React, {useEffect, useState, useRef } from 'react';
 import Asteroid from './Asteroid';
 import AsteroidInfo from './AsteroidInfo';
 import DropDown from './DropDown';
-const Controller = require('../controllers/index');
 
 const App = () => {
   const [asteroids, setAsteroids] = useState([]);
@@ -59,6 +58,9 @@ const App = () => {
       </div>
       <div className="about">
         Displays all near-earth-objects for a given day, as retrieved from NASA. Change the day to see historical records. Hover an asteroid's name on the right to see more info. Asteroid distance, size, and orbital speed are logarithmically proportional to the actual data.
+      </div>
+      <div className="copyright">
+        <small>Made by <a href="github.com/jclasley">Jon Lasley</a>, 2021</small>
       </div>
     </>
   )

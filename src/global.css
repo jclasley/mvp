@@ -86,3 +86,16 @@ form {
 circle {
   transition: opacity 1s;
 }
+
+.copyright {
+  position: absolute;
+  right: 1em;
+  bottom: 1em;
+  color: rgb(90, 90, 90);
+  font-size: 0.6em;
+  opacity: 0.5;
+}
+
+.copyright:hover {
+  opacity: 1;
+}

@@ -1,21 +1,7 @@
-import React, {useRef, useEffect, useState} from 'react';
-
-const degToRad = function (deg) {
-  return deg * Math.PI / 180;
-}
-
-const randomSign = () => Math.random() > 0.5 ? 1 : -1;
+import React from 'react';
 
 const Asteroid = ({asteroid, earth}) => {
-  const [isSelected, setSelected] = useState(false);
   const { distance, velocity, size, hazardous } = asteroid;
-  // const svg = d3.select('asteroids').append('svg')
-  //   .attr()
-  const ref = useRef(null);
-  useEffect(() => {
-    ref.current && ref.current.classList.length && 
-      ref.current.classList.includes('selected') && setSelected(true);
-  }, [ref])
 
   const earthX = earth.current.cx.baseVal.value;
   const earthY = earth.current.cy.baseVal.value;

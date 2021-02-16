@@ -1,7 +1,4 @@
-const data = require('./data.json');
-const {Asteroid, Approach} = require('./model');
-
-const a = new Asteroid({ name: 'test' })
+const {Asteroid} = require('./model');
 
 const createAsteroid = (obj) => {
   const asteroid = new Asteroid({

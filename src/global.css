@@ -65,6 +65,10 @@ p.name {
     text-decoration: underline;
 }
 
+span {
+  font-size: 1rem;
+}
+
 form {
   left: 2em;
   top: 3em;

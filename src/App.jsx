@@ -1,6 +1,5 @@
 import axios from 'axios';
 import React, {useEffect, useState, useRef } from 'react';
-import { CSSTransition } from 'react-transition-group';
 import Asteroid from './Asteroid';
 import AsteroidInfo from './AsteroidInfo';
 import DropDown from './DropDown';

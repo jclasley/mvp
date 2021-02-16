@@ -4,6 +4,7 @@
 
 body {
   background: black;
+  overflow: hidden;
 }
 
 .info-list{
@@ -82,17 +83,21 @@ form {
   bottom: 2em;
   width: 33%;
   color: rgb(90, 90, 90);
-  cursor: pointer;
   color: #007bff;
   display: flex;
   flex-direction: column;
   transition: opacity 1s;
+}
+
+#about:hover {
+  text-decoration: underline;
+   cursor: pointer;
+}
+
+#about {
   width: fit-content;
 }
 
-.about:hover{
-  text-decoration: underline;
-}
 
 circle {
   transition: opacity 1s;
@@ -115,6 +120,7 @@ circle {
   transition: opacity 1s;
   font-size: 0.8em;
   color:rgb(90, 90, 90);
+  text-decoration: none;
 }
 
 .show-info-enter {

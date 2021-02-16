@@ -35,7 +35,7 @@ const AsteroidInfo = ({time, distance, velocity, size, name, select}) => {
           <p>Velocity: {velocity.kph.toFixed(2)} kph</p>
           <p>Closest to Earth: {time} UTC</p>
         </div>
-    </CSSTransition>
+      </CSSTransition>
       
     </>
   )

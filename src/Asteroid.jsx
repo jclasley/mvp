@@ -19,7 +19,7 @@ const Asteroid = ({asteroid, earth}) => {
   return (
       <>
         <circle id={asteroid.name} fill={hazardous ? "red" : "white"}
-          r={Math.log10(avgSize + 2)/Math.log(2) * 4}>
+          r={Math.log(avgSize * 1000)}>
           <animateMotion dur={`${1 / velocity.kps * 200}s`} repeatCount="indefinite" begin="0s" path={`M ${centerX} ${centerY}
                 A ${radius} ${radius} 0 1 0
                   ${calcX(calcOpposite())} ${calcY(calcOpposite())}

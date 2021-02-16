@@ -10,7 +10,7 @@ const App = () => {
   const img = useRef(null);
 
   useEffect(() => {
-    axios.get('/api/asteroids')
+    axios.get(`${process.env.URL || ''}/api/asteroids`)
       .then(({data}) => data.map(obj => {
         return {
           time: obj.closeApproaches[0].date,
@@ -25,7 +25,7 @@ const App = () => {
   }, [])
 
   const update = (date) => {
-    axios.get(`/api/asteroids/${date}`)
+    axios.get(`${process.env.URL || ''}/api/asteroids/${date}`)
       .then(({ data }) => data.map(obj => {
         return {
           time: obj.closeApproaches[0].date,

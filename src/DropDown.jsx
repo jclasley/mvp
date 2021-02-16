@@ -7,13 +7,14 @@ const DropDown = ({update}) => {
   const [validDate, toggleValidDate] = useState(true);
 
   const handleSubmit = (e) => {
+    e.preventDefault();
       if (!validDate) {
         return;
       }
       update(date);
     }
   return (
-    <Form noValidate>
+    <Form noValidate onSubmit={handleSubmit}>
       <Form.Group>
         <Form.Control required type="text" 
           isValid={validDate}
@@ -25,7 +26,7 @@ const DropDown = ({update}) => {
           }} />
         <Form.Control.Feedback type="invalid">Please enter in the YYYY-MM-DD format</Form.Control.Feedback>
       </Form.Group>
-      <Button variant="secondary" size="sm" onClick={handleSubmit}>Search</Button>
+      <Button variant="secondary" size="sm" onClick={handleSubmit}>Explore</Button>
     </Form>
   )
 }

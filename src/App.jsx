@@ -25,7 +25,7 @@ const App = () => {
   }, [])
 
   const update = (date) => {
-    axios.get(`/api/asteroids/${date}`)
+    axios.get(`https://evening-wave-10124.herokuapp.com/api/asteroids/${date}`)
       .then(({ data }) => data.map(obj => {
         return {
           time: obj.closeApproaches[0].date,

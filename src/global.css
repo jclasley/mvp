@@ -37,14 +37,13 @@ svg {
 
 
 .asteroidInfo {
-  grid-column: 1;
-  grid-row: 1 / span 10;
   color: lightblue;
   align-self: center;
   position: absolute;
   text-align: center;
   margin: auto;
   font-size: 1.1em;
+  transition: opacity 1s;
 } 
 
 .summary {
@@ -129,7 +128,7 @@ circle {
 
 .show-info-enter-active {
   opacity: 1;
-  transition: all 500ms;
+  transition: all 1000ms;
 }
 
 .show-info-exit {
@@ -138,7 +137,7 @@ circle {
 
 .show-info-exit-active {
   opacity: 0;
-  transition: all 500ms;
+  transition: all 1000ms;
 
 }
 

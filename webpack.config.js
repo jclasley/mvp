@@ -33,13 +33,10 @@ module.exports = {
         },
       },
       {
-        test: /\.(png|jp(e*)g|svg|gif)$/,
+        test: /\.(png|jp(e*)g|svg|gif|mp3)$/,
         use: [
           {
             loader: 'file-loader',
-            options: {
-              name: 'images/[hash]-[name].[ext]',
-            },
           },
         ],
       }, 

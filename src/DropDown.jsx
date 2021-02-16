@@ -15,7 +15,6 @@ const DropDown = ({update}) => {
   return (
     <Form noValidate>
       <Form.Group>
-        <Form.Label>Date</Form.Label>
         <Form.Control required type="text" 
           isValid={validDate}
           isInvalid={!validDate}
@@ -26,7 +25,7 @@ const DropDown = ({update}) => {
           }} />
         <Form.Control.Feedback type="invalid">Please enter in the YYYY-MM-DD format</Form.Control.Feedback>
       </Form.Group>
-      <Button onClick={handleSubmit}>Search</Button>
+      <Button variant="secondary" size="sm" onClick={handleSubmit}>Search</Button>
     </Form>
   )
 }

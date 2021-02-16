@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import {CSSTransition} from 'react-transition-group';
 
 const About = () => {
   const [showInfo, toggleShowInfo] = useState(false);

@@ -24,7 +24,7 @@ const AsteroidInfo = ({time, distance, velocity, size, name, select}) => {
   return (
     <>
       <div className="asteroidList" 
-        style={{color: isHover ? "lightblue" : "white", opacity: isHover ? 1 : 0.5}}
+        style={{color: isHover ? "lightblue" : "white", opacity: isHover ? 1 : 0.65}}
         onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>{name}</div>
 
       <CSSTransition in={isHover} timeout={1000} classNames="show-info">

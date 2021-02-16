@@ -77,7 +77,7 @@ const App = () => {
       
       <About />
       <div className="copyright">
-        <small>Made by <a href="github.com/jclasley">Jon Lasley</a>, 2021</small>
+        <small>Made by <a href="http://github.com/jclasley">Jon Lasley</a>, 2021</small>
       </div>
     </>
   )

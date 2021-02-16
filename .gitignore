@@ -35,4 +35,4 @@ bower_components/
 .flooignore
 
 db/data.json
-.env
+/*.env

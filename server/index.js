@@ -11,14 +11,17 @@ app.use(express.json());
 app.use(express.static(path.resolve(__dirname, '../public')))
 
 app.get('/api/asteroids/:date?', async (req, res) => {
+  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
   try {
-    const date = formatDate(req.params.date || new Date(Date.now()))
+    const date = formatDate(req.params.date || new Date(Date.now()));
+    const month = months[+(date.match(/(?<=\-)\d{2}(?=\-)/)) - 1] 
     let results = await Asteroid.find({ 
       'closeApproaches.date': { 
-        '$regex': `.*${date.replace(/\-/g, '\\-')}.*`
+        '$regex': `.*${date.replace(/(?<=\-)\d{2}(?=\-)/, month)}.*`
       }
     });
     if (!results.length) {
+      console.log('api hit')
       results = await Controller.getDate(date, process.env.API_KEY);
       results = results.map((asteroid) => {
         const a = createAsteroid(asteroid);

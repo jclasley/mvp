@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect(process.env.MONGO_URL, {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect(process.env.MONGO_URL || 'mongodb://localhost:27017/mvp', {useNewUrlParser: true, useUnifiedTopology: true});
 
 
 const approachSchema = new mongoose.Schema({

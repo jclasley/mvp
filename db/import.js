@@ -3,7 +3,7 @@ const {Asteroid, Approach} = require('./model');
 
 const a = new Asteroid({ name: 'test' })
 
-data.near_earth_objects.forEach(async (obj) => {
+const createAsteroid = (obj) => {
   const asteroid = new Asteroid({
     astId: obj.id,
     name: obj.name,
@@ -29,7 +29,7 @@ data.near_earth_objects.forEach(async (obj) => {
     },
     hazardous: obj.is_potentially_hazardous_asteroid,
     closeApproaches: obj.close_approach_data.map(approach => ({
-      date: approach.close_approach_date,
+      date: approach.close_approach_date_full,
         relativeVelocity: {
         kps: approach.relative_velocity.kilometers_per_second,
           kph: approach.relative_velocity.kilometers_per_hour,
@@ -42,5 +42,7 @@ data.near_earth_objects.forEach(async (obj) => {
     }))
   })
 
-  await asteroid.save();
-})
+  return asteroid;
+};
+
+module.exports = createAsteroid;
